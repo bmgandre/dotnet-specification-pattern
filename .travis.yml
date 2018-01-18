@@ -6,10 +6,13 @@ matrix:
       dist: trusty
       dotnet: 2.1.2
       mono: none
+    - os: osx
+      dotnet: 2.1.2
+      mono: none
 script:
   - |
     cd src
-    dotnet sln remove SpecificationDemo.sln SpecificationDemoBddTest
+    dotnet sln SpecificationDemo.sln remove SpecificationDemoBddTest
     dotnet restore
     dotnet build
     cd ..
