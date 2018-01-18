@@ -1,0 +1,20 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+build_script:
+- cmd: >-
+    cd src
+
+    dotnet restore
+
+    dotnet build
+
+    cd ..
+test_script:
+- cmd: >-
+    cd src
+
+    dotnet test SpecificationDemoXunitTest
+
+    dotnet test SpecificationDemoBddTest
+
+    cd ..
