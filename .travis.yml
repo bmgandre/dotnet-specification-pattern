@@ -9,7 +9,7 @@ matrix:
 script:
   - |
     cd src
-    dotnet sln remove SpecificationDemoBddTest
+    dotnet sln remove SpecificationDemo.sln SpecificationDemoBddTest
     dotnet restore
     dotnet build
     cd ..
