@@ -1,0 +1,20 @@
+language: csharp
+dist: trusty
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      dotnet: 2.1.2
+      mono: none
+script:
+  - |
+    cd src
+    dotnet restore
+    dotnet build
+    cd ..
+after_success:
+  - |
+    cd src
+    dotnet test SpecificationDemoXunitTest
+    dotnet test SpecificationDemoBddTest
+    cd ..
