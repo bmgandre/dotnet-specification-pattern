@@ -30,6 +30,9 @@ project.fragment.lock.json
 artifacts/
 **/Properties/launchSettings.json
 
+# Specflow
+*.feature.cs
+
 *_i.c
 *_p.c
 *_i.h
@@ -87,6 +90,9 @@ artifacts/
 *.mdf
 *.ldf
 *.ndf
+
+# Sqlite
+*.db
 
 ### Editors ###
 
