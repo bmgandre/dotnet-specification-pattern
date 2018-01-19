@@ -171,5 +171,7 @@ Console.Write(Blogs.Where(specification));
 ```
 
 ## License
+
 Copyright (c) 2018 André Gomes
+
 Licensed under the [MIT](LICENSE) License.
