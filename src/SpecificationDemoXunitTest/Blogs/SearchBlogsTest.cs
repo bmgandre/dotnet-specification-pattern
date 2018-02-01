@@ -30,7 +30,8 @@ namespace SpecificationDemoXunitTest.Blogs
 
             // Act
             var blogRepository = new EfReadRepository<Blog>(_mockDbContext.BloggingContext);
-            var service = new BlogService(blogRepository);
+            var specificationFactory = new SpecificationFactory();
+            var service = new BlogService(specificationFactory, blogRepository);
             var searchResult = await service.GetNotExpiredBlogsAfterAsync(afterDate, CancellationToken.None);
 
             // Assert

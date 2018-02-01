@@ -23,7 +23,7 @@ namespace SpecificationDemoTest.Steps.Blogs
             _mockDbContext = mockDbContext;
         }
 
-        [Given(@"I looking for blogs created after (.*)")]
+        [Given(@"I looking for blogs created after (.+)")]
         public void Given_I_looking_for_blogs_created_after(string value)
         {
             _searchDateTime = DateTime.Parse(value);
@@ -33,11 +33,12 @@ namespace SpecificationDemoTest.Steps.Blogs
         public async Task When_I_search_for_blogs()
         {
             var blogRepository = new EfReadRepository<Blog>(_mockDbContext.BloggingContext);
-            var service = new BlogService(blogRepository);
+            var specificationFactory = new SpecificationFactory();
+            var service = new BlogService(specificationFactory, blogRepository);
             _searchResult = await service.GetNotExpiredBlogsAfterAsync(_searchDateTime, CancellationToken.None);
         }
 
-        [Then(@"the count should be (.*)")]
+        [Then(@"the count should be (.+)")]
         public void Then_the_count_should_be(long value)
         {
             Check.That(_searchResult).IsEqualTo(value);

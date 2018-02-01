@@ -25,7 +25,8 @@ namespace SpecificationDemoConsole
                 context.ConfigureLogging(s => Console.WriteLine(s), SqlLoggerFilter);
                 await BloggingContextSeed.SeedAsync(context);
 
-                var specification = SpecificationBuilder<Blog>.Create()
+                var specificationFactory = new SpecificationFactory();
+                var specification = specificationFactory.Create<Blog>()
                     .CreatedAfter(new DateTime(2017, 1, 1));
 
                 var blogRepository = new EfReadRepository<Blog>(context);

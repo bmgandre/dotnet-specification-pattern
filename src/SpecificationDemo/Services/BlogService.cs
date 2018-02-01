@@ -9,16 +9,19 @@ namespace SpecificationDemo.Services
 {
     public class BlogService
     {
-        private readonly EfReadRepository<Blog> _blogRepository;
+        private readonly IReadRepository<Blog> _blogRepository;
+        private readonly ISpecificationFactory _specificationFactory;
 
-        public BlogService(EfReadRepository<Blog> repository)
+        public BlogService(ISpecificationFactory  specificationFactory,
+            IReadRepository<Blog> repository)
         {
             _blogRepository = repository;
+            _specificationFactory = specificationFactory;
         }
 
         public async Task<long> GetNotExpiredBlogsAfterAsync(DateTime dateTime, CancellationToken cancellationToken)
         {
-            var specification = SpecificationBuilder<Blog>.Create()
+            var specification = _specificationFactory.Create<Blog>()
                 .NotExpired()
                 .CreatedAfter(dateTime);
 
