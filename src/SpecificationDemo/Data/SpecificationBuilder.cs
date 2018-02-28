@@ -12,6 +12,11 @@ namespace SpecificationDemo.Data
         {
         }
 
+        public static SpecificationBuilder<T> Create()
+        {
+            return new NullSpecification<T>();
+        }
+
         public bool IsSatisfiedBy(T entity)
         {
             if (entity == null)
